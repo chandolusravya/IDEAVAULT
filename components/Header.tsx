@@ -12,7 +12,7 @@ function Header() {
 
   return (
     //check if a user exists, if so, show his/her name --> his/her Workspace
-    <div>
+    <div className="flex items-ceenter justify-between p-5">
     
       { user && (
         <h1>
