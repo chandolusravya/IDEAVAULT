@@ -18,7 +18,21 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "IDEAVAULT",
   description: "A collaboration tool for all.",
+  
+  icons: [
+    {
+      rel: 'icon',
+      url: '/images/logo_dark.png',
+      media: '(prefers-color-scheme: light)',
+    },
+    {
+      rel: 'icon',
+      url: '/images/brainstorming.png',
+      media: '(prefers-color-scheme: dark)',
+    },
+  ],
 };
+
 
 export default function RootLayout({
   children,
