@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import {Poppins} from "@next/font/google"
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { SignInButton } from "@clerk/nextjs";
+import { SignUpButton, SignIn } from "@clerk/nextjs";
 import Link from "next/link";
 import FlickeringGrid from "@/components/ui/flickering-grid";
 
@@ -36,7 +36,7 @@ If I want the background from original coral pink to pricot color
       <h2 className="ml-8 sm:text-xl text-primary font-serif font-extrabold mt-4">Ideavault</h2>
       
       <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
-      <h1 className="text-outline text-2xl sm:text-6xl md:text-7xl text-slate-800 text-center font-sans font-bold mt-44">
+      <h1 className="text-outline text-3xl sm:text-6xl md:text-7xl text-slate-800 text-center font-sans font-bold mt-44">
     
       Your <span className="text-[#e36e51] font-serif">ultimate workspace </span>to build something beautiful</h1>
       <div className="mt-12"></div>
@@ -47,33 +47,34 @@ If I want the background from original coral pink to pricot color
       </h2>
       <div className="mt-8"></div>
       <div className="flex justify-between gap-5">
-      
-      <Button className="px-8 py-0.5  
+       
+      <Button className="px-8 py-0.5 
       border-2 border-[#d3d5f3] hover:border-black dark:border-white uppercase
       bg-[#d3d5f3]
       hover:bg-slate-700
       
       text-black font-bold hover:text-white
       transition duration-200 
-      text-sm 
+      text-sm
       hover: shadow-[1px_1px_rgba(0,0,0),2px_2px_rgba(0,0,0),3px_3px_rgba(0,0,0),4px_4px_rgba(0,0,0),5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[1px_1px_rgba(255,255,255),2px_2px_rgba(255,255,255),3px_3px_rgba(255,255,255),4px_4px_rgba(255,255,255),5px_5px_0px_0px_rgba(255,255,255)] ">
-      <SignInButton>
-        Get Ideavault Free
-     
-      </SignInButton>
-      <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
+      <Link href="/sign-up" className="flex items-center">
+        GET IDEAVAULT FREE <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
+        
+        </Link>
+      
       </Button>
       <Button className="px-8 py-0.5  
       border-2 border-[#d3d5f3] hover:border-black dark:border-white uppercase
       bg-[#d3d5f3]
       hover:bg-slate-700
       
-      text-black font-bold hover:text-white
+      text-black font-bold hover:text-white 
       transition duration-200 
       text-sm 
       hover: shadow-[1px_1px_rgba(0,0,0),2px_2px_rgba(0,0,0),3px_3px_rgba(0,0,0),4px_4px_rgba(0,0,0),5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[1px_1px_rgba(255,255,255),2px_2px_rgba(255,255,255),3px_3px_rgba(255,255,255),4px_4px_rgba(255,255,255),5px_5px_0px_0px_rgba(255,255,255)] ">
-   <Link href="/">
-        Explore Docs
+   <Link href="/" className="flex items-center">
+        Explore Docs <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
+        
         </Link>
       </Button>
       

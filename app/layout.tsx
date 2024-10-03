@@ -44,8 +44,10 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header/>
-        
-        {children}
+        <div>{/* SIDEBAR */}
+
+        <div>{children}</div>
+        </div>
       </body>
     </html>
     </ClerkProvider>
