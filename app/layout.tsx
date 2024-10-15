@@ -1,9 +1,14 @@
+
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import { ClerkProvider } from "@clerk/nextjs";
+import { ClerkProvider, useUser } from "@clerk/nextjs";
+//import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
+import Sidebar from "@/components/Sidebar";
 
+
+//defining fonts
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -39,15 +44,20 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+ // const { user } = useUser(); // Get the authenticated user
+  //const router = useRouter();
+  //const isLandingPage = router.pathname === '/';
   return (
     <ClerkProvider>
     <html lang="en">
       <body>
         <Header/>
-        <div>{/* SIDEBAR */}
-
+      
+          
+  
         <div>{children}</div>
-        </div>
+        {/* we use flex-1 saying to use up all the space leaving starting space for sidebar */}
+       
       </body>
     </html>
     </ClerkProvider>

@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
-import {Poppins} from "@next/font/google"
+import {Poppins} from "next/font/google"
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { ArrowRight, Sparkles } from "lucide-react";
 import { SignUpButton, SignIn } from "@clerk/nextjs";
@@ -21,7 +21,7 @@ If I want the background from original coral pink to pricot color
   return (
 
 
-    <main className="flex flex-col min-h-screen bg-white bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]">
+    <div className="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] relative z-10">
  
     <FlickeringGrid
         className="z-0 absolute insert-0 size-full"
@@ -32,8 +32,16 @@ If I want the background from original coral pink to pricot color
         flickerChance={0.1}
        
       />
+      <div className="flex justify-start">
+       <Image
+      src={"/images/logo_dark.png"}
+      height="20"
+      width="35"
+      alt="app logo"
+    />
    
-      <h2 className="ml-8 sm:text-xl text-primary font-serif font-extrabold mt-4">Ideavault</h2>
+      <h2 className="ml-2 sm:text-xl text-primary font-serif font-extrabold mt-4">Ideavault</h2>
+      </div>
       
       <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
       <h1 className="text-outline text-3xl sm:text-6xl md:text-7xl text-slate-800 text-center font-sans font-bold mt-44">
@@ -112,7 +120,7 @@ If I want the background from original coral pink to pricot color
 </footer>
  
 
-    </main>
+    </div>
      
 
 

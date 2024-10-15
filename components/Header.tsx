@@ -2,7 +2,7 @@
 "use client"
 
 //import { SignedIn, SignedOut, SignInButton} from "@clerk/clerk-react";
-import { useUser, SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { useUser, SignedIn, SignedOut, SignInButton, UserButton, UserProfile } from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
@@ -39,7 +39,10 @@ function Header() {
              </SignInButton>
         </SignedOut>
         <SignedIn>
-           <UserButton></UserButton> 
+          
+           <UserButton>
+           <UserProfile/>
+           </UserButton> 
            {/* userbutton is similar to the profile button */}
         </SignedIn>
 
