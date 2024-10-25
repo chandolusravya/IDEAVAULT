@@ -99,3 +99,7 @@ body {
       -1px 1px 0 #000,
       1px 1px 0 #000
 }
+.UserButton {
+  position: relative;
+  z-index: 9999; /* Make sure the UserButton is above everything */
+}

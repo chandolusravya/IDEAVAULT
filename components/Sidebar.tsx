@@ -29,6 +29,7 @@ function Sidebar() {
     },[pathname, isMobile])
    
     const handleMouseDown=(
+
         event: React.MouseEvent<HTMLDivElement, MouseEvent>
     ) =>{
         event.preventDefault();
@@ -96,8 +97,9 @@ function Sidebar() {
 
    }
 
-  return (
+   return (
     <>
+
     <aside 
     ref={sidebarRef}
     className={cn(
@@ -106,6 +108,7 @@ function Sidebar() {
         isMobile && "w-0"
     )}
     >
+        {/*collapse button*/ }
         <div 
         onClick={collapse}
         role="button" 
@@ -122,6 +125,7 @@ function Sidebar() {
     <div className='mt-4'>
         <p> documents</p>
     </div>
+    {/**resize handle */}
     <div 
     onMouseDown={handleMouseDown}
     onClick={resetWidth}
@@ -131,12 +135,13 @@ function Sidebar() {
     <div
     ref={navbarRef}
     className={cn(
-        "absolute top-0 z-[99999] left-60 w-[calc(100%-240px)]",
+        "absolute left-60 w-[calc(100%-240px)]",
         isResetting && "transition-all ease-in-out duration-300",
-        isMobile && "left-0 w-full"
+        isMobile && "left-0 w-full",
+        "z-[10]"
     )}
     >
-    <nav className='bg-transparent px-3 py-14 w-full'>
+    <nav className='bg-transparent px-3 py-0 w-full'>
         {isCollapsed && <MenuIcon onClick={resetWidth} role="button" className='h-6 w-6 text-muted-foreground'/>}
     </nav>
     </div>
@@ -145,4 +150,3 @@ function Sidebar() {
 }
 
 export default Sidebar;
- 

@@ -4,7 +4,7 @@ import { cn } from "@/lib/utils";
 import {Poppins} from "next/font/google"
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { ArrowRight, Sparkles } from "lucide-react";
-import { SignUpButton, SignIn } from "@clerk/nextjs";
+
 import Link from "next/link";
 import FlickeringGrid from "@/components/ui/flickering-grid";
 

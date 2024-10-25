@@ -40,9 +40,10 @@ function Header() {
         </SignedOut>
         <SignedIn>
           
-           <UserButton>
-           <UserProfile/>
-           </UserButton> 
+           <UserButton/>
+           
+           
+          
            {/* userbutton is similar to the profile button */}
         </SignedIn>
 
