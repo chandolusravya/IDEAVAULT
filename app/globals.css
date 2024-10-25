@@ -103,3 +103,6 @@ body {
   position: relative;
   z-index: 9999; /* Make sure the UserButton is above everything */
 }
+.image-container{
+  border-radius: 10px;
+}
