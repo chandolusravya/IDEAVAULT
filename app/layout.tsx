@@ -54,7 +54,7 @@ export default function RootLayout({
         <Header/>
       
           
-  
+        
         <div>{children}</div>
         {/* we use flex-1 saying to use up all the space leaving starting space for sidebar */}
        

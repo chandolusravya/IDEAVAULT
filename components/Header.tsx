@@ -6,6 +6,7 @@ import { useUser, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/ne
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
 import { useEffect } from "react";
+import Breadcrumbs from "./Breadcrumbs";
 
 
 function Header() {
@@ -32,6 +33,7 @@ function Header() {
       )}
 
       {/* Using Breadcrumbs--> similar to showing which directory/path you are in for the user*/}
+      <Breadcrumbs/>
       <div>
         <SignedOut>
              <SignInButton mode="modal">

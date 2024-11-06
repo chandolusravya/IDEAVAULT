@@ -4,6 +4,7 @@ import Image from "next/image"
 import { useUser } from "@clerk/nextjs"
 import { Button } from "@/components/ui/button";
 import { PlusCircle } from "lucide-react";
+import NewDocumentButton from "@/components/NewDocumentButton";
 
 export default function page(){
   const {user} =useUser();
@@ -17,16 +18,16 @@ export default function page(){
             <Image 
             src="/images/newdoc_light.jpg"
           
-            height="300"
-            width="400"
+            height="200"
+            width="300"
             
             alt="create new doc"
-            className=" rounded-[10%] dark:hidden"
+            className=" rounded-[5%] dark:hidden"
             />
             <Image
             src="/images/newdoc_dark.jpg"
-            height="300"
-            width="300"
+            height="200"
+            width="200"
             alt="create new doc"
             className="hidden dark:block"
             />
@@ -34,11 +35,8 @@ export default function page(){
               Welcome to {user?.username} &apos;s Ideavault
 
             </h2>*/}
-            <Button className="mt-5">
-              <PlusCircle className="h-4 w-4 mr-2"/>
-              Create a note
-
-            </Button>
+            {/**should be attached to server action */}
+            <NewDocumentButton/>
                 </div>
       
         </div>

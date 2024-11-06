@@ -5,7 +5,25 @@ import { useMediaQuery } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
 import { cn } from '@/lib/utils';
 import { UserItem } from './dashboard/user-item';
+import NewDocumentButton from './NewDocumentButton';
+import { Button } from './ui/button';
+import {useCollection} from "react-firebase-hooks/firestore";
+import { useUser } from '@clerk/nextjs';
+import { collectionGroup, DocumentData, query, where } from 'firebase/firestore';
+import { db } from '@/firebase';
+import SidebarOption from './SidebarOption';
+
+interface RoomDocument extends DocumentData {
+    createdAt: string;
+    role: "owner" | "editor";
+    roomId: string;
+    userId: string
+}
+
+
+
 function Sidebar() {
+
     const pathname=usePathname();
     const isMobile=useMediaQuery("(max-width:768px)");
     const isResizingRef= useRef(false);
@@ -13,6 +31,54 @@ function Sidebar() {
     const navbarRef=useRef<ElementRef<"div">>(null);
     const [isResetting, setIsResetting]=useState(false);
     const [isCollapsed, setIsCollapsed]=useState(isMobile);
+    const {user}=useUser();
+    const [groupedData, setGroupedData]=useState<{
+        owner:RoomDocument[];
+        editor: RoomDocument[];
+    }>({
+        owner: [],
+        editor:[],
+    });
+
+    //in the below line the query will go ahead and check through every single room's sub collection which is known as collection group
+    //because we got index setup in firestore, we can query based on userid or roomid.
+    const [data, loading,error] =useCollection(
+        user && (
+            query(collectionGroup(db, 'rooms'),where('userId', '==', user.emailAddresses[0].toString()) )
+        ) 
+    );
+    
+    //data.docs is an array of items, [doc1,doc2,..] where we r turning this into object where one of the keys is owner and values[doc1, doc2] and other key is editor.
+    //{"owner": [doc1,doc2],"editor":[doc3]}
+    useEffect(() => {
+        if (!data) return;
+        const grouped= data.docs.reduce<{
+            owner: RoomDocument[];
+            editor: RoomDocument[];
+        }>(
+            (acc,curr) => {
+                const roomData=curr.data() as RoomDocument;
+
+                if (roomData.role === "owner"){
+                    acc.owner.push({
+                        id:curr.id,
+                        ...roomData});
+                }else {
+                    acc.editor.push({
+                        id: curr.id,
+                        ...roomData,
+                    });
+                }
+                return acc;
+            },{
+                //if u r owner, will push into owner part of array and if editor, push into editor part of array.
+                owner: [],
+                editor: [],
+            }
+        )
+
+        setGroupedData(grouped);
+    }, [data])
 
     useEffect(()=>{
         if(isMobile){
@@ -123,8 +189,49 @@ function Sidebar() {
    <div>
    <UserItem />
     </div>
-    <div className='mt-4'>
-        <p> documents</p>
+    <div className='mt-0 p-2 md:p-5'>
+        {/**to hide add document when on phone */}
+        <div className='hidden md:inline'>
+        <Button className=" px-12 py-1 font-serif text-xs rounded-md bg-[#ba7543] text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-[#ba7543]">
+             
+              Add Document
+
+            </Button>
+            </div>
+        
+       <div className='flex py-4 flex-col space-y-4 md:max-w-36'>
+       {/**My documents */}
+       {groupedData.owner.length === 0 ? (
+        <h2 className='text-gray-500 font-semibold text-sm'>
+            No documents found
+        </h2>
+       ):(
+        <>
+          <h2 className='text-gray-500 font-semibold text-sm'>
+            My Documents
+          </h2>
+          {groupedData.owner.map((doc) => (
+           // <p>{doc.roomId}</p>
+            <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+          ))}
+        </>
+       )}
+
+       </div>
+       {/**Shared with me */}
+       {groupedData.editor.length > 0 && (
+          <>
+            <h2 className='text-gray-500 font-semibold text-sm'>
+                Shared with Me
+            </h2>
+            {groupedData.editor.map((doc) => (
+          
+            <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+          ))}
+          </>
+       )}
+
+
     </div>
     {/**resize handle */}
     <div 
