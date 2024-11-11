@@ -1,4 +1,4 @@
-
+//1st level layout wrapping around clerkprovider
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
