@@ -12,7 +12,7 @@ function DocumentPage({
 }) {
   //console.log(id);
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div style={{ display: 'flex', minHeight: '100vh', flexGrow: 1 }}>
       <Sidebar />
       <div style={{ padding: '20px', flexGrow: 1 }}>
       {/**<div className='flex flex-col flex-1 min-h-screen'> */}

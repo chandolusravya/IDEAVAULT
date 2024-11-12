@@ -8,6 +8,7 @@ import {doc, updateDoc} from "firebase/firestore";
 import { db } from "@/firebase";
 import { useEffect } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
+import Editor from "./Editor";
 
 function Document({id}:{id: string}) {
   
@@ -64,9 +65,11 @@ function Document({id}:{id: string}) {
           {/**Avatars */}
 
     </div>
+    {/**horizontal line below input area */}
+    <hr className="pb-5 " />
 
         {/**Collaborative editor */}
-
+  <Editor/>
     </div>
 
 

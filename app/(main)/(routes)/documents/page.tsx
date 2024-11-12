@@ -9,9 +9,10 @@ import NewDocumentButton from "@/components/NewDocumentButton";
 export default function page(){
   const {user} =useUser();
     return (
-        <div className="flex min-h-screen">
-            
+        <div className="flex h-screen">
+           
               <Sidebar/>
+              
         <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide "> 
         
             <div className="h-full flex flex-col items-center justify-center">
