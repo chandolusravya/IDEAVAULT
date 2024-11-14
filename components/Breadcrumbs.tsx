@@ -13,9 +13,9 @@ import { Fragment } from "react";
 function Breadcrumbs() {
 const path = usePathname();
 //http://localhost:3000/doc/NMiIhSYRCIklyX7TtlmK
-//this is the oath we have, we need to split now.
+//this is the path we have, we need to split now.
 
-  const segments=path.split("/");
+  const segments=path.split("/").filter(Boolean);
 
   //console.log(segments);
   return (

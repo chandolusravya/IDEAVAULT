@@ -9,13 +9,18 @@ import { db } from "@/firebase";
 import { useEffect } from "react";
 import { useDocumentData } from "react-firebase-hooks/firestore";
 import Editor from "./Editor";
+import useOwner from "@/lib/useOwner";
+import DeleteDocument from "./DeleteDocument";
+import InviteUser from "./InviteUser";
+import ManageUsers from "./ManageUsers";
+
 
 function Document({id}:{id: string}) {
   
   const [data, loading, error]=useDocumentData(doc(db,"documents", id));
   const [input, setInput]=useState("");
   const [isUpdating, startTransition]=useTransition(); //useful when someone clicks on the button, we gonna disable it.
-  
+  const isOwner = useOwner(); //useOwner is custom hook preseny in lib folder.
   
   //useeffect will have dependency array that will include data that is being pulled from firebase hook useDocumentData
   useEffect(()=>{
@@ -37,7 +42,8 @@ function Document({id}:{id: string}) {
   }
 
   return (
-    <div>
+    //for the editor to be white
+    <div className="flex-1 h-full ml-[15px] bg-white p-5 ">
 
         <div  className="flex max-w-6xl mx-auto justify-between pb-5 pr-5 pl-5">
             <form className="flex flex-1 space-x-2 " onSubmit={updateTitle}>
@@ -54,12 +60,23 @@ function Document({id}:{id: string}) {
 
 
                 {/* IF*/}
+                {isOwner && (
+                  <>
+                  {/**Ivite user */}
+                   <InviteUser />
+
+                  {/**delete doc button */}
+                   <DeleteDocument />
+                  </>
+                )}
                 {/** isOwner && InviteUser, DeleteDocument */}
             </form>
         </div>
           <div>
           {/** Manage Users */}
-
+        <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+         < ManageUsers />
+        </div>
 
 
           {/**Avatars */}
@@ -77,4 +94,4 @@ function Document({id}:{id: string}) {
   )
 }
 
-export default Document
+export default Document;

@@ -9,7 +9,8 @@ import NewDocumentButton from "@/components/NewDocumentButton";
 export default function page(){
   const {user} =useUser();
     return (
-        <div className="flex h-screen">
+        <div className="flex min-h-screen">
+          {/**change flex h-screen to flex min-h-screen. */}
            
               <Sidebar/>
               

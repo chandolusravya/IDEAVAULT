@@ -6,6 +6,8 @@ import { ClerkProvider, useUser } from "@clerk/nextjs";
 //import { useRouter } from "next/navigation";
 import Header from "@/components/Header";
 import Sidebar from "@/components/Sidebar";
+import { Toaster } from "@/components/ui/sonner";
+
 
 
 //defining fonts
@@ -55,9 +57,9 @@ export default function RootLayout({
       
           
         
-        <div>{children}</div>
+        <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide">{children}</div>
         {/* we use flex-1 saying to use up all the space leaving starting space for sidebar */}
-       
+       <Toaster position="top-center" />
       </body>
     </html>
     </ClerkProvider>
