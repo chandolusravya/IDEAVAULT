@@ -13,7 +13,7 @@ import useOwner from "@/lib/useOwner";
 import DeleteDocument from "./DeleteDocument";
 import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
-
+import Avatars from "./Avatars";
 
 function Document({id}:{id: string}) {
   
@@ -72,14 +72,13 @@ function Document({id}:{id: string}) {
                 {/** isOwner && InviteUser, DeleteDocument */}
             </form>
         </div>
-          <div>
+          
           {/** Manage Users */}
-        <div className="flex max-w-6xl mx-auto justify-between items-center mb-5">
+        <div className="flex max-w-6xl mx-auto justify-between items-center pb-5 pr-5 pl-5">
          < ManageUsers />
-        </div>
-
-
+     
           {/**Avatars */}
+          <Avatars />
 
     </div>
     {/**horizontal line below input area */}
@@ -91,7 +90,7 @@ function Document({id}:{id: string}) {
 
 
 
-  )
+  );
 }
 
 export default Document;

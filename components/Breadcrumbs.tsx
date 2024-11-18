@@ -9,16 +9,25 @@ import {
     BreadcrumbSeparator,
   } from "@/components/ui/breadcrumb"
 import { Fragment } from "react";
+import { useEffect, useState } from "react";
   
 function Breadcrumbs() {
 const path = usePathname();
 //http://localhost:3000/doc/NMiIhSYRCIklyX7TtlmK
 //this is the path we have, we need to split now.
 
-  const segments=path.split("/").filter(Boolean);
+  const [segments, setSegments] = useState<string[]>([]);
+  //const segments=path.split("/").filter(Boolean);
+  useEffect(() => {
+    // This effect will only run on the client side
+    setSegments(path.split("/").filter(Boolean));
+  }, [path]);
+
+  if (segments.length === 0) return null; // Don't render breadcrumbs if no segments are available
 
   //console.log(segments);
   return (
+    <nav aria-label="breadcrumb">
     <Breadcrumb>
   <BreadcrumbList>
     <BreadcrumbItem>
@@ -49,7 +58,7 @@ const path = usePathname();
 
   </BreadcrumbList>
 </Breadcrumb>
-
+</nav>
   )
 }
 

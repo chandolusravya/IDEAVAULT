@@ -12,7 +12,8 @@ import { useCreateBlockNote} from "@blocknote/react";
 import "@blocknote/core/fonts/inter.css";
 import "@blocknote/shadcn/style.css";
 import stringToColor from "@/lib/stringToColor";
-
+import TranslateDocument
+ from "./TranslateDocument";
 type EditorProps = {
     doc: Y.Doc;
     provider: any;
@@ -98,6 +99,8 @@ function Editor() {
     <div className="flex items-center gap-2 justify-end mb-10">
        
         {/**translate document AI  */}
+
+        <TranslateDocument doc={doc} />
 
         {/**chat with docuent AI */}
 
