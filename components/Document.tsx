@@ -15,6 +15,7 @@ import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
 
+
 function Document({id}:{id: string}) {
   
   const [data, loading, error]=useDocumentData(doc(db,"documents", id));

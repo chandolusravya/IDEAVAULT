@@ -2,14 +2,17 @@
 import Sidebar from "@/components/Sidebar"
 import Image from "next/image"
 
+
 export default function Home(){
     return (
         <div className="flex min-h-screen">
-            
-              <Sidebar/>
+      
         <div className="flex-1 p-4 bg-gray-100 overflow-y-auto scrollbar-hide "> 
        {/* <div className="absolute inset-0 rounded-xl blur-md bg-gradient-to-r from-purple-500 via-pink-500 to-red-500 opacity-50"></div>*/}
             <div className="h-full flex flex-col items-center justify-center ">
+            
+
+            
             <Image
             src="/images/newdoc_light.jpg"
             height="300"
@@ -24,7 +27,7 @@ export default function Home(){
             alt="create new doc"
             className="hidden dark:block"
             />
-            Home page
+            
                 </div>
       
         </div>

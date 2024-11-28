@@ -14,7 +14,7 @@ function DocumentPage({
   return (
     <div style={{ display: 'flex', minHeight: '100vh', flexGrow: 1 }}>
       <Sidebar />
-      <div style={{ padding: '20px', flexGrow: 1 }}>
+      <div style={{ margin: '30px', flexGrow: 1 }}>
       {/**<div className='flex flex-col flex-1 min-h-screen'> */}
       <Document id={id} />
             {/**<div>Document page : {id}</div>*/}
