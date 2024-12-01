@@ -4,9 +4,10 @@ import { cn } from "@/lib/utils";
 import {Poppins} from "next/font/google"
 import TypewriterTitle from "@/components/TypewriterTitle";
 import { ArrowRight, Sparkles } from "lucide-react";
-
+import Globe from "@/components/ui/globe";
 import Link from "next/link";
 import FlickeringGrid from "@/components/ui/flickering-grid";
+import { CarouselDemo } from "@/components/CarouselDemo";
 
 
 const font=Poppins({
@@ -17,14 +18,15 @@ export default function Home() {
   {/* <div className="bg-gradient-to-r min-h-screen from-[#FED1C6] to-[#FFEAD6]">
 </div>
 If I want the background from original coral pink to pricot color
+bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
  */}
   return (
 
 
-    <div className="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] relative z-10">
+    <div className="flex flex-col min-h-screen bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))] relative z-10  scroll-smooth">
  
     <FlickeringGrid
-        className="z-0 absolute insert-0 size-full"
+        className="z-0 absolute insert-0 w-full h-full"
         squareSize={4}
         gridGap={6}
         color="#6B7280"
@@ -32,7 +34,7 @@ If I want the background from original coral pink to pricot color
         flickerChance={0.1}
        
       />
-      <div className="flex justify-start">
+      {/* <div className="flex justify-start">
        <Image
       src={"/images/logo_dark.png"}
       height="20"
@@ -41,9 +43,9 @@ If I want the background from original coral pink to pricot color
     />
    
       <h2 className="ml-2 sm:text-xl text-primary font-serif font-extrabold mt-4">Ideavault</h2>
-      </div>
-      
-      <div className="absolute top-[40%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
+      </div> */}
+  <section className="flex flex-col items-center justify-center min-h-screen mt-[20vh]">
+      <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
       <h1 className="text-outline text-3xl sm:text-6xl md:text-7xl text-slate-800 text-center font-sans font-bold mt-44">
     
       Your <span className="text-[#e36e51] font-serif">ultimate workspace </span>to build something beautiful</h1>
@@ -85,18 +87,102 @@ If I want the background from original coral pink to pricot color
         
         </Link>
       </Button>
-      
+  
      </div>
       
     </div>
-   
-    <section className=" mt-auto pb-12">
+</section>
+    <section className="flex-grow-1 mt-[0vh] pb-12 ">
+      <div className="flex  mb-16 gap-x-14 mr-16 ml-40 ">
+      <div className="container mx-auto flex items-center justify-center gap-x-12">
+        {/* <h1 className="text-2xl font-bold mb-4"> Collaborate from anywhere</h1>  */}
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-slate-900 to-gray-600/80 bg-clip-text  text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 text-wrap" >
+      Collaborate in real-time, seamlessly, anywhere, anytime
+      </span>
+        <div className="relative flex h-[48vh]  w-[101vh] -top-0 items-center justify-center overflow-hidden rounded-3xl border  bg-gradient-to-b from-gray-900 to-gray-300/80 md:pb-60 md:shadow-2xl ">
+      
+        <Globe
+     className="absolute inset-0 h-[42vh] w-[42vh]"
+   />
+
+      <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+    </div>
+     
+      </div>
+      </div >
+      <div className="flex items-center mb-16 gap-x-32 ml-48 mr-16">
+  <div className="relative flex h-[48vh] w-[48vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl ">
+    <Image
+      className="absolute inset-0 h-[48vh] w-[48vh] object-cover"
+      src="/images/remember_anything_animated.webp"
+      alt="remember"
+      width={500} // Arbitrary large value; actual size is controlled by CSS
+      height={500} // Arbitrary large value; actual size is controlled by CSS
+    />
+    <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+  </div>
+  <div className="flex-1">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+      Remember Anything & Everything
+    </span>
+  </div>
+</div>
+
+<div className="flex items-center mb-16 gap-x-12 ml-48 mr-16">
+  <div className="flex-1 mt-8">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 flex text-wrap">
+      An editor with endless customization and live pointers tracking who's editing
+    </span>
+  </div>
+  
+  <div className="relative flex h-[48vh] w-[65vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl">
+    <Image
+      className="absolute inset-0 h-[48vh] w-[65vh] object-cover"
+      src="/images/editor_flexible_2.webp"
+      alt="remember"
+      width={500} // Arbitrary large value; actual size is controlled by CSS
+      height={500} // Arbitrary large value; actual size is controlled by CSS
+    />
+    <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
+  </div>
+</div>
+
+<div className="flex items-center mb-16 gap-x-32 ml-48 mr-16">
+  <div className="relative flex h-[53vh] w-[58vh] items-center justify-center overflow-hidden rounded-xl  md:shadow-2xl bg-[#f3edf0] ">
+    <CarouselDemo />
+  </div>
+  <div className="flex-1">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+      AI-powered Doc insights: Summarize, translate, and chat with your content, all in one place
+    </span>
+  </div>
+</div>
+
+
+
+     </section>
+
+
+     <section className="  pb-12 flex-grow">
       <div className="container mx-auto">
-        <h1 className="text-2xl font-bold mb-4>Hello second section"> </h1>
+         
+        
+      </div>
+     </section>
+     <section className="  pb-12 flex-grow">
+      <div className="container mx-auto">
+
+      </div>
+     </section>
+     <section className="  pb-12 flex-grow">
+      <div className="container mx-auto">
+       
       </div>
      </section>
    
-     <footer className="flex items-center justify-between w-full p-6 z-50 bg-white">
+    
+    
+   <footer className="flex items-center justify-between w-full p-6 z-50 bg-white">
   <div className="hidden md:flex items-center gap-x-2">
     <Image
       src={"/images/logo_dark.png"}
@@ -117,10 +203,12 @@ If I want the background from original coral pink to pricot color
     </Button>
   </div>
   
-</footer>
- 
+</footer> 
 
-    </div>
+</div>
+
+
+   
      
 
 

@@ -135,7 +135,7 @@ export default function Page() {
                         <a href={`/doc/${doc.id}`} className="flex-1">
                           <img
                             src={imageUrls[doc.id]}
-                            alt="Generated Document Image"
+                            alt="Generated Image"
                             className="max-w-[100px] h-auto cursor-pointer"
                           />
                         </a>

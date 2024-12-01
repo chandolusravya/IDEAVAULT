@@ -1,3 +1,4 @@
+
 //1st level layout wrapping around clerkprovider
 import type { Metadata } from "next";
 import localFont from "next/font/local";
@@ -58,7 +59,9 @@ export default function RootLayout({
         
     
         
-        <div className="flex-1 bg-slate-200 overflow-y-auto scrollbar-hide">{children}</div>
+        <div className="flex-1 bg-slate-200 overflow-y-auto scrollbar-hide">
+          {children}
+        </div>
  
     
         {/* we use flex-1 saying to use up all the space leaving starting space for sidebar */}

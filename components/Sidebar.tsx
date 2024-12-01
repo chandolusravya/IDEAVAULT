@@ -170,7 +170,7 @@ function Sidebar() {
     <aside 
     ref={sidebarRef}
     className={cn(
-        'group/sidebar  min-h-screen bg-[#fcf7ee] overflow-y-auto relative flex w-60 flex-col z-[99999]',
+        'group/sidebar  min-h-screen bg-[#f3edf0] border-r-2 border-dashed border-[#f4dae7e0] overflow-y-auto relative flex w-60 flex-col z-[99999]',
         isResetting && "transition-all ease-in-out duration-300",
         isMobile && "w-0"
     )}
