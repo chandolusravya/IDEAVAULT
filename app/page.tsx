@@ -8,7 +8,8 @@ import Globe from "@/components/ui/globe";
 import Link from "next/link";
 import FlickeringGrid from "@/components/ui/flickering-grid";
 import { CarouselDemo } from "@/components/CarouselDemo";
-
+import Card_Landing from "@/components/Card_Landing";
+import useMeasure from "react-use-measure";
 
 const font=Poppins({
   subsets:["latin"],
@@ -20,6 +21,20 @@ export default function Home() {
 If I want the background from original coral pink to pricot color
 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]
  */}
+
+ const images = [
+  { image: "/images/journal_f.jpg", text: "Journal" },
+  { image: "/images/meeting_notes.webp", text: "Meeting Notes" },
+  {image: "/images/class_notes.jpeg", text: "Class Notes"},
+  { image: "/images/planner.jpeg", text: "Planner" },
+  { image: "/images/research.jpg", text: "Research" },
+  { image: "/images/to_do_task.png", text: "To-Do" },
+  
+  { image: "/images/memo.webp", text: "Memo" },
+];
+
+
+
   return (
 
 
@@ -44,7 +59,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
    
       <h2 className="ml-2 sm:text-xl text-primary font-serif font-extrabold mt-4">Ideavault</h2>
       </div> */}
-  <section className="flex flex-col items-center justify-center min-h-screen mt-[20vh]">
+  <section className="flex flex-col items-center justify-center min-h-screen mt-[15vh]">
       <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 flex flex-col items-center justify-center">
       <h1 className="text-outline text-3xl sm:text-6xl md:text-7xl text-slate-800 text-center font-sans font-bold mt-44">
     
@@ -89,6 +104,18 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
       </Button>
   
      </div>
+
+   
+     <div className="container mx-auto flex justify-center items-center">
+        <div className="absolute  flex gap-4  mt-80">
+          {[...images].map((item, idx)=> (
+           <Card_Landing key={idx} image={item.image}  text_of_img={item.text} />
+          ))}
+        </div>
+         
+        
+      </div>
+     
       
     </div>
 </section>
@@ -96,10 +123,10 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
       <div className="flex  mb-16 gap-x-14 mr-16 ml-40 ">
       <div className="container mx-auto flex items-center justify-center gap-x-12">
         {/* <h1 className="text-2xl font-bold mb-4"> Collaborate from anywhere</h1>  */}
-        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-slate-900 to-gray-600/80 bg-clip-text  text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 text-wrap" >
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text  text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 text-wrap" >
       Collaborate in real-time, seamlessly, anywhere, anytime
       </span>
-        <div className="relative flex h-[48vh]  w-[101vh] -top-0 items-center justify-center overflow-hidden rounded-3xl border  bg-gradient-to-b from-gray-900 to-gray-300/80 md:pb-60 md:shadow-2xl ">
+        <div className="relative flex h-[48vh]  w-[101vh] -top-0 items-center justify-center overflow-hidden rounded-xl border  bg-gradient-to-b from-gray-900 to-gray-300/80 md:pb-60 md:shadow-2xl ">
       
         <Globe
      className="absolute inset-0 h-[42vh] w-[42vh]"
@@ -122,7 +149,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
     <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
   </div>
   <div className="flex-1">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-300/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
       Remember Anything & Everything
     </span>
   </div>
@@ -130,7 +157,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
 
 <div className="flex items-center mb-16 gap-x-12 ml-48 mr-16">
   <div className="flex-1 mt-8">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 flex text-wrap">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 flex text-wrap">
       An editor with endless customization and live pointers tracking who's editing
     </span>
   </div>
@@ -152,8 +179,8 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
     <CarouselDemo />
   </div>
   <div className="flex-1">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-black to-gray-600/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
-      AI-powered Doc insights: Summarize, translate, and chat with your content, all in one place
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+      AI-powered Doc insights: Multilingual Summarization, translation, Interactive GPT - Based Document Assistance, all in one place
     </span>
   </div>
 </div>
@@ -163,12 +190,17 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
      </section>
 
 
-     <section className="  pb-12 flex-grow">
-      <div className="container mx-auto">
+     {/* <section className="  pb-12 flex-grow">
+      <div className="container mx-auto py-8 flex justify-center items-center">
+        <div className="absolute  flex gap-4 ">
+          {[...images].map((item, idx)=> (
+           <Card_Landing key={idx} image={item.image}  text_of_img={item.text} />
+          ))}
+        </div>
          
         
       </div>
-     </section>
+     </section> */}
      <section className="  pb-12 flex-grow">
       <div className="container mx-auto">
 

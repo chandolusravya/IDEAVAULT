@@ -44,6 +44,7 @@
     "react-markdown": "^9.0.1",
     "react-scroll": "^1.9.0",
     "react-spring": "^9.7.4",
+    "react-use-measure": "^2.1.1",
     "shadcn-ui": "^0.9.2",
     "sonner": "^1.7.0",
     "tailwind-merge": "^2.5.2",

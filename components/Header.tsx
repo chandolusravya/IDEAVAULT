@@ -180,7 +180,7 @@ function Header() {
             </NavigationMenu> 
 <div className={`${font.className} text-sm flex items-center gap-x-10 `}>
             <div className="  ">
-              <Link href="" className={font.className}> 
+              <Link href="/files/About.docx" className={font.className}> 
               About Us
               </Link>
           
