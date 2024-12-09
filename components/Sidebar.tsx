@@ -1,5 +1,5 @@
 "use client"
-import { ChevronsLeft, MenuIcon } from 'lucide-react';
+import { ChevronsLeft, MenuIcon, Trash } from 'lucide-react';
 import React, { ElementRef, useEffect, useRef, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts';
 import { usePathname } from 'next/navigation';
@@ -12,6 +12,7 @@ import { useUser } from '@clerk/nextjs';
 import { collectionGroup, DocumentData, query, where } from 'firebase/firestore';
 import { db } from '@/firebase';
 import SidebarOption from './SidebarOption';
+import DeleteDocument from './DeleteDocument';
 
 interface RoomDocument extends DocumentData {
     createdAt: string;
@@ -189,31 +190,38 @@ function Sidebar() {
    <div>
    <UserItem />
     </div>
+    <hr className='p-1 bg-[#f4dae7e0] border-slate-200'></hr>
     <div className='mt-0 p-2 md:p-5'>
         {/**to hide add document when on phone */}
         <div className='hidden md:inline'>
-        <Button className=" px-12 py-1 font-serif text-xs rounded-md bg-[#ba7543] text-white font-bold transition duration-200 hover:bg-white hover:text-black border-2 border-transparent hover:border-[#ba7543]">
-             
-              Add Document
+        <div className=" flex justify-start items-center mr-10 h-[13%]  md:w-auto text-sm">
+              <NewDocumentButton/>
 
-            </Button>
             </div>
+            </div>
+        
+        <hr className='mt-4 bg-[#f4dae7e0] p-1 border-slate-400'></hr>
         
        <div className='flex py-4 flex-col space-y-4 md:max-w-36'>
        {/**My documents */}
        {groupedData.owner.length === 0 ? (
-        <h2 className='text-gray-500 font-semibold text-sm'>
+        <h2 className='text-gray-500 font-semibold text-sm mt-1'>
             No documents found
         </h2>
        ):(
         <>
-          <h2 className='text-gray-500 font-semibold text-sm'>
+          <h2 className='text-slate-800 font-semibold text-md ml-7'>
             My Documents
           </h2>
           {groupedData.owner.map((doc) => (
            // <p>{doc.roomId}</p>
+           
             <SidebarOption key={doc.id} id={doc.id} href={`/doc/${doc.id}`} />
+           
+            
+            
           ))}
+         
         </>
        )}
 
@@ -221,7 +229,7 @@ function Sidebar() {
        {/**Shared with me */}
        {groupedData.editor.length > 0 && (
           <>
-            <h2 className='text-gray-500 font-semibold text-sm'>
+            <h2 className='text-slate-800 font-semibold text-sm mt-1'>
                 Shared with Me
             </h2>
             {groupedData.editor.map((doc) => (

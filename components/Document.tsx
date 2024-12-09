@@ -14,6 +14,8 @@ import DeleteDocument from "./DeleteDocument";
 import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
+import CommentSection from "./Comments";
+
 
 
 function Document({id}:{id: string}) {
@@ -22,6 +24,7 @@ function Document({id}:{id: string}) {
   const [input, setInput]=useState("");
   const [isUpdating, startTransition]=useTransition(); //useful when someone clicks on the button, we gonna disable it.
   const isOwner = useOwner(); //useOwner is custom hook preseny in lib folder.
+  
   
   //useeffect will have dependency array that will include data that is being pulled from firebase hook useDocumentData
   useEffect(()=>{
@@ -44,7 +47,7 @@ function Document({id}:{id: string}) {
 
   return (
     //for the editor to be white
-    <div className="flex-1 h-full ml-[15px] bg-white p-5 ">
+    <div className="flex-1 h-full ml-[10px] bg-white p-5 ">
 
         <div  className="flex max-w-6xl mx-auto justify-between pb-5 pr-5 pl-5">
             <form className="flex flex-1 space-x-2 " onSubmit={updateTitle}>
@@ -86,7 +89,10 @@ function Document({id}:{id: string}) {
     <hr className="pb-5 " />
 
         {/**Collaborative editor */}
+  
   <Editor/>
+  <hr className="pb-5 " />
+  <CommentSection />
     </div>
 
 

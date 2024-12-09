@@ -1,5 +1,5 @@
 "use client"
-import Sidebar from "@/components/Sidebar"
+
 import Image from "next/image"
 
 

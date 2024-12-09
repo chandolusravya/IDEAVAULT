@@ -2,14 +2,16 @@
 'use client'
 import Sidebar from '@/components/Sidebar'
 import Document from '@/components/Document'
+import { use } from 'react';
 //u get this params by giving props as argument within paranthesis and then give command console.log(props)
 function DocumentPage({
-  params: { id },
+  params: paramsPromise,
 }: {
-  params:{
-    id: string
-  }
+  params: Promise<{id: string}>;
 }) {
+  const params =use(paramsPromise);
+  const {id} =params;
+  
   //console.log(id);
   return (
     <div style={{ display: 'flex', minHeight: '100vh', flexGrow: 1 }}>

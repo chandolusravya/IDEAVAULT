@@ -20,11 +20,11 @@ export const UserItem = () =>{
             <DropdownMenuTrigger asChild>
                 {/** change primary background color when u hover over. */}
                 <div role="button" className="flex items-center text-sm p-3 w-full hover:bg-primary/5">
-                  <div className="gap-x-2 flex items-center max-w-[150px]">
+                  <div className="gap-x-2 flex items-center max-w-[180px]">
                     <Avatar className="h-5 w-5">
                         <AvatarImage src={user?.imageUrl}/>
                     </Avatar>
-                    <span className="text-start font-medium line-clamp-1">
+                    <span className="text-start font-medium line-clamp-1 font-sans">
                         {user?.username}&apos;s Ideavault
                     </span>
                   </div>

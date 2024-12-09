@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { Button } from "./ui/button"; // Make sure your Input and Button components are styled accordingly
-import { Dialog, DialogContent,DialogFooter, DialogHeader } from "./ui/dialog";
+import { Dialog, DialogClose, DialogContent,DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog";
 import { Input } from "./ui/input";
 
 interface TextToImageProps {
@@ -53,21 +53,23 @@ const TextToImage = ({ open, onClose, onImageGenerated, docId }: TextToImageProp
 
   return (
     <Dialog open={open} onOpenChange={onClose}>
-      <DialogContent>
-        <DialogHeader>
-          <h2>Generate Image for Document</h2>
-        </DialogHeader>
+      <DialogContent className="bg-slate-50">
+        <DialogTitle>Generate Image for Document</DialogTitle>
+       
         <div className="space-y-4">
           <Input
-            placeholder="Enter a title for the image prompt"
+          className="bg-slate-50 "
+            placeholder="Enter a title to generate an image for your document."
             value={title}
             onChange={(e) => setTitle(e.target.value)}
           />
         </div>
         <DialogFooter>
+          
           <Button onClick={handleGenerateImage} disabled={!title || loading}>
             {loading ? "Generating..." : "Generate"}
           </Button>
+          
           <Button variant="ghost" onClick={onClose}>
             Cancel
           </Button>

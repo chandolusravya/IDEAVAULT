@@ -106,3 +106,153 @@ body {
 .image-container{
   border-radius: 10px;
 }
+
+.comments-container {
+  margin-bottom: 2.5rem; /* mb-10 */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  
+}
+
+.comment-composer {
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #1a202c; /* border-dark-300 */
+  background-color: #2d3748; /* bg-dark-200 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
+}
+
+@media (min-width: 1024px) {
+  .comment-composer {
+    width: 350px;
+  }
+}
+
+.comment-thread {
+  width: 100%;
+  max-width: 800px;
+  border: 1px solid #1a202c; /* border-dark-300 */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1); /* shadow-sm */
+  transition: all 0.3s ease-in-out;
+}
+
+@media (min-width: 1024px) {
+  .comment-thread {
+    width: 350px;
+  }
+}
+.lb-root {
+  --lb-accent: purple;
+  --lb-spacing: 1em;
+  --lb-radius: 0;
+}
+
+
+.lb-composer-action {
+  padding: 8px;
+}
+.lb-comment-content {
+  
+  margin-top: 12px;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+
+.lb-comment,
+.lb-thread-comments,
+.lb-composer,
+.lb-comment-reaction {
+  font-size: 14px;
+  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.lb-inbox-notification-list-item:where(:not(:last-of-type)) {
+  border-bottom: none;
+}
+
+
+
+
+
+
+
+.lb-composer-editor :where([data-placeholder]) {
+  padding: 1px;
+  font-size: 12px;
+  color: #1a202c;
+  
+  
+}
+
+.lb-lexical-floating-threads-thread:where([data-resolved]) {
+  opacity: 40%;
+  font-size: 14px;
+}
+
+.lb-elevation {
+
+  font-size: 14px;
+  background-color: rgb(238, 233, 227);
+  border-color: #000;
+  
+  padding: 5px;
+}
+
+.lb-comment-date,
+.lb-lexical-mention-suggestion-user,
+.lb-composer-suggestions-list-item,
+.lb-inbox-notification-date,
+.lb-comment-author {
+  color: #3f62a5;
+  padding-inline: 5px;
+  font-size: 14px;
+  padding-bottom: 5px;
+  font-weight:300;
+  
+}
+
+.lb-comment-body,
+.lb-dropdown-item,
+.lb-dropdown-item-icon,
+.lb-composer-editor {
+  font-size: 14px;
+  padding-bottom: 3px;
+}
+.lb-button {
+  --lb-foreground-moderate: #fff;
+}
+
+.lb-button:where([data-variant="primary"]) {
+  
+  padding: 5px;
+}
+
+.lb-button:where(
+    [data-variant="default"]:not(
+        :is(
+            :enabled:hover,
+            :enabled:focus-visible,
+            [aria-expanded="true"],
+            [aria-selected="true"]
+          )
+      )
+  ) {
+  color: #f09aad;
+  font-size: 12px;
+  padding-top: 2px;
+}
+
+.lb-button:where(
+    :enabled:hover,
+    :enabled:focus-visible,
+    [aria-expanded="true"],
+    [aria-selected="true"]
+  ) {
+  --lb-button-background: #161e30;
+
+  color: #b4c6ee;
+}

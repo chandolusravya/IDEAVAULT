@@ -67,6 +67,10 @@ function Editor() {
 
 
     useEffect(() => {
+        if (!room) {
+            return; // Prevent any action if the room is not initialized yet.
+        }
+        
         const yDoc = new Y.Doc(); //Y.Doc is the structire of the document that stores rich text and real time data store.
         const yProvider = new LiveblocksYjsProvider(room, yDoc);
         setDoc(yDoc);

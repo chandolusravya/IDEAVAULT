@@ -5,9 +5,16 @@ import { adminDb } from "@/firebase-admin";
 
 
 export async function POST(req:NextRequest) {
-    auth().protect(); //to ensure user is authenticated.
+  //auth().protect(); //to ensure user is authenticated.
+   try {
     
     const {sessionClaims} = await auth();
+    if (!sessionClaims) {
+        return NextResponse.json(
+            { message: "User not authenticated" },
+            { status: 401 }
+        );
+    }
     const {room}=await req.json();
 
     //get user, prepare a session & populate data in the user info as part of the access token 
@@ -43,4 +50,11 @@ export async function POST(req:NextRequest) {
             {status: 403}
         );
     }
+} catch (error){
+    console.error("Error in auth-endpoint POST handler:", error);
+    return NextResponse.json(
+      { message: "Internal Server Error" },
+      { status: 500 }
+    );
+}
 }

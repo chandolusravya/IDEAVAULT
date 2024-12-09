@@ -10,6 +10,8 @@ import {
   } from "@/components/ui/breadcrumb"
 import { Fragment } from "react";
 import { useEffect, useState } from "react";
+import { doc, getDoc, onSnapshot } from "firebase/firestore";
+import { db } from "@/firebase";
   
 function Breadcrumbs() {
 const path = usePathname();
@@ -17,13 +19,47 @@ const path = usePathname();
 //this is the path we have, we need to split now.
 
   const [segments, setSegments] = useState<string[]>([]);
+  const [docTitle, setDocTitle] = useState<string | null>(null);
+  const [docExists, setDocExists] = useState(true); // Tracks if the document exists
+
+
+
+
   //const segments=path.split("/").filter(Boolean);
   useEffect(() => {
     // This effect will only run on the client side
     setSegments(path.split("/").filter(Boolean));
   }, [path]);
 
-  if (segments.length === 0) return null; // Don't render breadcrumbs if no segments are available
+
+  useEffect(() => {
+    if (segments.length > 1) {
+      const lastSegment = segments[segments.length - 1];
+
+      const docRef = doc(db, 'documents', lastSegment); // 'documents' is your collection name
+
+      // Listen to real-time updates on the document using onSnapshot
+      const unsubscribe = onSnapshot(
+        docRef,
+        (docSnap) => {
+          if (docSnap.exists()) {
+            setDocTitle(docSnap.data().title); // Assuming the title field is named "title"
+            setDocExists(true);
+          } else {
+            setDocExists(false); // Document does not exist
+          }
+        },
+        (error) => {
+          console.error('Error listening to document:', error);
+        }
+      );
+
+      return () => unsubscribe(); // Clean up the listener on component unmount
+    }
+  }, [segments]);
+
+
+  if (segments.length === 0 || !docExists) return null; // Don't render breadcrumbs if no segments are available
 
   //console.log(segments);
   return (
@@ -45,7 +81,7 @@ const path = usePathname();
                 <BreadcrumbSeparator/>
             <BreadcrumbItem>
             {isLast ? (
-                <BreadcrumbPage className="text-gray-900 ">{segment}</BreadcrumbPage>
+                <BreadcrumbPage className="text-gray-900 ">{docTitle ? `${docTitle} (${segment})` : segment}</BreadcrumbPage>
             ):(
                 <BreadcrumbLink href={href} className="hover:text-gray-900">{segment}</BreadcrumbLink>
             )}

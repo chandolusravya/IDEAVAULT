@@ -2,7 +2,7 @@
 "use client";
 import React from 'react'
 import Typewriter from 'typewriter-effect'
-import { Sparkles } from 'lucide-react';
+
 
 type Props = {}
 

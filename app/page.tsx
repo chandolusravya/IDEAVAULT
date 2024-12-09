@@ -121,12 +121,12 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
 </section>
     <section className="flex-grow-1 mt-[0vh] pb-12 ">
       <div className="flex  mb-16 gap-x-14 mr-16 ml-40 ">
-      <div className="container mx-auto flex items-center justify-center gap-x-12">
+      <div className="container mx-auto flex items-center justify-center gap-x-14">
         {/* <h1 className="text-2xl font-bold mb-4"> Collaborate from anywhere</h1>  */}
-        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text  text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 text-wrap" >
+        <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b font-serif from-blue-900 to-blue-500/80 bg-clip-text  text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 text-wrap" >
       Collaborate in real-time, seamlessly, anywhere, anytime
       </span>
-        <div className="relative flex h-[48vh]  w-[101vh] -top-0 items-center justify-center overflow-hidden rounded-xl border  bg-gradient-to-b from-gray-900 to-gray-300/80 md:pb-60 md:shadow-2xl ">
+        <div className="relative flex h-[40vh]  w-[101vh] -top-0 items-center justify-center overflow-hidden rounded-xl border  bg-gradient-to-b from-gray-900 to-gray-300/80 md:pb-60 md:shadow-2xl ">
       
         <Globe
      className="absolute inset-0 h-[42vh] w-[42vh]"
@@ -138,9 +138,9 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
       </div>
       </div >
       <div className="flex items-center mb-16 gap-x-32 ml-48 mr-16">
-  <div className="relative flex h-[48vh] w-[48vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl ">
+  <div className="relative flex h-[40vh] w-[40vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl ">
     <Image
-      className="absolute inset-0 h-[48vh] w-[48vh] object-cover"
+      className="absolute inset-0 h-[40vh] w-[40vh] object-cover"
       src="/images/remember_anything_animated.webp"
       alt="remember"
       width={500} // Arbitrary large value; actual size is controlled by CSS
@@ -149,7 +149,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
     <div className="pointer-events-none absolute inset-0 h-full bg-[radial-gradient(circle_at_50%_200%,rgba(0,0,0,0.2),rgba(255,255,255,0))]" />
   </div>
   <div className="flex-1">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-300/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b font-serif from-blue-950 to-blue-500/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
       Remember Anything & Everything
     </span>
   </div>
@@ -157,14 +157,14 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
 
 <div className="flex items-center mb-16 gap-x-12 ml-48 mr-16">
   <div className="flex-1 mt-8">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 flex text-wrap">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b font-serif from-blue-900 to-blue-500/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10 flex text-wrap">
       An editor with endless customization and live pointers tracking who's editing
     </span>
   </div>
   
-  <div className="relative flex h-[48vh] w-[65vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl">
+  <div className="relative flex h-[40vh] w-[65vh] items-center justify-center overflow-hidden rounded-3xl border-2 border-gray-200 bg-gradient-to-b from-gray-800 to-gray-300/80 md:shadow-2xl">
     <Image
-      className="absolute inset-0 h-[48vh] w-[65vh] object-cover"
+      className="absolute inset-0 h-[40vh] w-[65vh] object-cover"
       src="/images/editor_flexible_2.webp"
       alt="remember"
       width={500} // Arbitrary large value; actual size is controlled by CSS
@@ -175,11 +175,11 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
 </div>
 
 <div className="flex items-center mb-16 gap-x-32 ml-48 mr-16">
-  <div className="relative flex h-[53vh] w-[58vh] items-center justify-center overflow-hidden rounded-xl  md:shadow-2xl bg-[#f3edf0] ">
+  <div className="relative flex h-[50vh] w-[58vh] items-center justify-center overflow-hidden rounded-xl  md:shadow-2xl bg-[#f3edf0] ">
     <CarouselDemo />
   </div>
   <div className="flex-1">
-    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b from-blue-900 to-blue-400/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
+    <span className="pointer-events-none whitespace-pre-wrap bg-gradient-to-b font-serif from-blue-900 to-blue-500/80 bg-clip-text text-4xl font-bold text-transparent dark:from-white dark:to-slate-900/10">
       AI-powered Doc insights: Multilingual Summarization, translation, Interactive GPT - Based Document Assistance, all in one place
     </span>
   </div>
@@ -201,16 +201,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
         
       </div>
      </section> */}
-     <section className="  pb-12 flex-grow">
-      <div className="container mx-auto">
-
-      </div>
-     </section>
-     <section className="  pb-12 flex-grow">
-      <div className="container mx-auto">
-       
-      </div>
-     </section>
+    
    
     
     

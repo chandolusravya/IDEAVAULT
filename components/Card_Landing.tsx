@@ -34,7 +34,7 @@ const Card_Landing: React.FC<CardProps> = ({image, text_of_img}) => {
           </motion.div>
       )}
       </AnimatePresence>
-      <Image src={image} alt={image} fill style={{objectFit: 'cover'}}></Image>
+      <Image src={image} alt={image} fill style={{objectFit: 'cover'}}   sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 180px"></Image>
     </motion.div>
   );
 }

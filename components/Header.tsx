@@ -1,7 +1,6 @@
 
 "use client"
 
-//import { SignedIn, SignedOut, SignInButton} from "@clerk/clerk-react";
 import { useUser, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
 import { Button } from "./ui/button";
 import { useRouter } from "next/navigation";
@@ -19,7 +18,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
   NavigationMenuViewport,
-} from "@/components/ui/navigation-menu"
+} from "@/components/ui/navigation-menu";
 import Link from "next/link";
 import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
 
@@ -31,43 +30,12 @@ const font=Poppins({
   weight:["500","500"]
 });
 
-const components: { title: string; href: string; description: string }[] = [
-  {
-    title: "Note Taking",
-    href: "",
-    description:
-      "A modal dialog that interrupts the user with important content and expects a response.",
-  },
-  {
-    title: "AI Features",
-    href: "",
-    description:
-      "For sighted users to preview content available behind a link.",
-  },
-  {
-    title: "Teams",
-    href: "",
-    description:
-      "Displays an indicator showing the completion progress of a task, typically displayed as a progress bar.",
-  },
-  {
-    title: "Productivity",
-    href: "",
-    description: "Visually or semantically separates content.",
-  },
-  {
-    title: "Self-organizing",
-    href: "",
-    description:
-      "A set of layered sections of content—known as tab panels—that are displayed one at a time.",
-  },
   
-]
 
 function Header() {
     //to check if a user is logged in or not user hook: useUser():
 
-  const {user }=useUser();
+  const {user, isLoaded }=useUser();
   const [isClient, setIsClient] = useState(false);
 
   useEffect(() => {
@@ -86,7 +54,7 @@ function Header() {
     //check if a user exists, if so, show his/her name --> his/her Workspace
     <div className="flex items-center justify-between p-2 border-b-2 border-dashed border-[#f4dae7e0]  bg-[#f3edf0]">
     
-      { isClient && user && (
+      { isClient && isLoaded && user && (
         <h1>
             {user?.firstName}{`'s`} Workspace
         </h1>
@@ -150,7 +118,7 @@ function Header() {
                         onPointerEnter={(e) => e.stopPropagation()}
                         onPointerLeave={(e) => e.stopPropagation()}
                       >
-                        <div >
+                        
                         <ul >
                         <li>
                           <Button className="w-44 h-10 border-2 border-white flex justify-start items-center">
@@ -165,7 +133,7 @@ function Header() {
                             </li>
                             
                         </ul>
-                        </div>
+                      
                       </NavigationMenuContent>
 
                 </NavigationMenuItem>
