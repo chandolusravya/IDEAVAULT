@@ -1,6 +1,6 @@
 //to have our own cursors and other stuff automatically plugged in.
 'use client'
-import { LiveList, LiveObject } from "@liveblocks/client";
+
 import { 
     ClientSideSuspense,
     RoomProvider as RoomProviderWrapper,

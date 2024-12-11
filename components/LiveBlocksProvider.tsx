@@ -7,8 +7,11 @@ import {
     LiveblocksProvider,
     RoomProvider,
   } from "@liveblocks/react/suspense";
+ 
+
 
 function LiveBlocksProvider({children}:{children: React.ReactNode}){
+ 
     if (!process.env.NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY) {
         throw new Error("NEXT_PUBLIC_LIVEBLOCKS_PUBLIC_KEY is not set");
     }
@@ -16,6 +19,7 @@ function LiveBlocksProvider({children}:{children: React.ReactNode}){
     // Define resolveUsers to fetch user metadata
   
     //children because who ever is using will get rendered inside
+   
     return (
         //throttle for 60FPS. to get smooth real time experience. 16 is max 
     <LiveblocksProvider throttle={16} authEndpoint={"/auth-endpoint"}
@@ -32,6 +36,17 @@ function LiveBlocksProvider({children}:{children: React.ReactNode}){
     
         return users;
       }}
+      // resolveMentionSuggestions={async ({ text, roomId }) => {
+      //   console.log("fetching text: ",text)
+      //   console.log("fetching roomID: ", roomId)
+      //   const roomUsers = await getDocumentUsers({
+      //     roomId,
+      //     currentUser: clerkUser?.emailAddresses[0].emailAddress!,
+      //     text,
+      //   });
+      //   return roomUsers;
+      // }}
+      
     
     >
         {children}

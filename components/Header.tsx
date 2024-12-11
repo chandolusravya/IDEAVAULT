@@ -1,180 +1,134 @@
-
 "use client"
 
-import { useUser, SignedIn, SignedOut, SignInButton, UserButton} from "@clerk/nextjs";
+import { 
+  useUser, 
+  SignedIn, 
+  SignedOut, 
+  SignInButton, 
+  UserButton
+} from "@clerk/nextjs";
 import { Button } from "./ui/button";
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-import Breadcrumbs from "./Breadcrumbs";
 import Image from "next/image";
-import {Poppins} from "next/font/google"
+import { Poppins } from "next/font/google";
 import { cn } from "@/lib/utils";
+import Link from "next/link";
 import {
   NavigationMenu,
   NavigationMenuContent,
-  NavigationMenuIndicator,
   NavigationMenuItem,
-  NavigationMenuLink,
   NavigationMenuList,
   NavigationMenuTrigger,
-  NavigationMenuViewport,
 } from "@/components/ui/navigation-menu";
-import Link from "next/link";
-import { navigationMenuTriggerStyle } from "@/components/ui/navigation-menu"
+import Breadcrumbs from "./Breadcrumbs";
 
-;
-
-
-const font=Poppins({
-  subsets:["latin"],
-  weight:["500","500"]
+// Font configuration
+const font = Poppins({
+  subsets: ["latin"],
+  weight: ["500"]
 });
 
-  
-
 function Header() {
-    //to check if a user is logged in or not user hook: useUser():
+  const { user, isLoaded } = useUser();
 
-  const {user, isLoaded }=useUser();
-  const [isClient, setIsClient] = useState(false);
-
-  useEffect(() => {
-    setIsClient(true); // Set the state to true only on the client side
-  }, [])
-  //const router = useRouter();
-
- {/* useEffect(() => {
-    if (user) {
-      router.push('/Home'); // Redirect to home if signed in
-    }
-  }, [user, router]);
-*/}
+  // Handle loading state explicitly
+  if (!isLoaded) {
+    return (
+      <div className="flex items-center justify-center p-4">
+        <span>Loading...</span>
+      </div>
+    );
+  }
 
   return (
-    //check if a user exists, if so, show his/her name --> his/her Workspace
-    <div className="flex items-center justify-between p-2 border-b-2 border-dashed border-[#f4dae7e0]  bg-[#f3edf0]">
-    
-      { isClient && isLoaded && user && (
-        <h1>
-            {user?.firstName}{`'s`} Workspace
-        </h1>
-      )}
+    <div className="flex items-center justify-between p-2 border-b-2 border-dashed border-[#f4dae7e0] bg-[#f3edf0]">
+      {/* Logo and App Name - Far Left */}
+      <div className="flex items-center gap-x-2">
+        <Image
+          src="/images/logo_dark.png"
+          height="28"
+          width="28"
+          alt="app logo"
+        />
+        <p className={cn("font-bold text-sm", font.className)}>
+          {user ? `${user.firstName}'s Ideavault` : 'Ideavault'}
+        </p>
+      </div>
 
-      {/* Using Breadcrumbs--> similar to showing which directory/path you are in for the user*/}
-      <Breadcrumbs/>
-      {/* <div className="flex-grow"></div> */}
-      <div className="flex gap-x-4">
+      {/* Breadcrumbs - Center */}
+      <Breadcrumbs />
+
+      {/* Authentication and Navigation - Far Right */}
+      <div className="flex items-center gap-x-4">
+        {/* Signed Out View */}
         <SignedOut>
-             
-             <div className="hidden md:flex items-center gap-x-2 ">
-            <Image
-              src={"/images/logo_dark.png"}
-              height="35"
-              width="35"
-              alt="app logo"
-            />
-            <p className={cn("font-bold text-sm", font.className)}>Ideavault</p>
-            </div>
-            <div className=" flex justify-center items-center ml-64 gap-x-2 ">
-            <NavigationMenu  >
-              <NavigationMenuList>
-                
-                <NavigationMenuItem >
-                <NavigationMenuTrigger className={`${font.className} ml-36 gap-x-2 font-bold`}>Solutions</NavigationMenuTrigger>
-                <NavigationMenuContent
-                    
-                        onPointerEnter={(e) => e.stopPropagation()}
-                        onPointerLeave={(e) => e.stopPropagation()}
-                      >
-                        <ul >
-                        <li>
-                          <Button className="w-32 h-10 border-2 border-white flex justify-start items-center">
-                            Note Taking
-                          </Button>
-                        </li>
+          <NavigationMenu>
+            <NavigationMenuList>
+              {/* Solutions Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  className={`${font.className} gap-x-2 font-bold`}
+                >
+                  Solutions
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-2 p-2">
+                    {[
+                      "Note Taking",
+                      "Teams",
+                      "Productivity",
+                      "Self-Organizing"
+                    ].map((solution) => (
+                      <li key={solution}>
+                        <Button className="w-32 h-10 border-2 border-white flex justify-start items-center">
+                          {solution}
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
 
-                           
-                            <li>
-                            <Button className="w-32 h-10 border-2 border-x-white flex justify-start items-center">Teams</Button>
-                            </li>
-                            <li>
-                            <Button className="w-32 h-10 border-2 border-x-white flex justify-start items-center">Productivity</Button>
-                            </li>
-                            <li>
-                            <Button className="w-32 h-10 border-2 border-x-white flex justify-start items-center">Self-Organizing</Button>
-                            </li>
-                        
-                            
-                        </ul>
-                      </NavigationMenuContent>
+              {/* AI Features Dropdown */}
+              <NavigationMenuItem>
+                <NavigationMenuTrigger 
+                  className={`${font.className} gap-x-2`}
+                >
+                  AI Features
+                </NavigationMenuTrigger>
+                <NavigationMenuContent>
+                  <ul className="grid gap-2 p-2">
+                    {[
+                      "Summarize & Translate",
+                      "Chat with document",
+                      "Custom Dashboard"
+                    ].map((feature) => (
+                      <li key={feature}>
+                        <Button className="w-44 h-10 border-2 border-white flex justify-start items-center">
+                          {feature}
+                        </Button>
+                      </li>
+                    ))}
+                  </ul>
+                </NavigationMenuContent>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
 
-                </NavigationMenuItem>
-            
-                <NavigationMenuItem >
-                <NavigationMenuTrigger className={`${font.className} gap-x-2`} >AI Features</NavigationMenuTrigger>
-                <NavigationMenuContent
-          
-                   
-                        onPointerEnter={(e) => e.stopPropagation()}
-                        onPointerLeave={(e) => e.stopPropagation()}
-                      >
-                        
-                        <ul >
-                        <li>
-                          <Button className="w-44 h-10 border-2 border-white flex justify-start items-center">
-                           Summarize & Translate 
-                          </Button>
-                        </li>
-                            <li>
-                            <Button className="w-44 h-10 border-2 border-x-white flex justify-start items-center">Chat with document</Button>
-                            </li>
-                            <li>
-                            <Button className="w-44 h-10 border-2 border-x-white flex justify-start items-center">Custom Dashboard</Button>
-                            </li>
-                            
-                        </ul>
-                      
-                      </NavigationMenuContent>
-
-                </NavigationMenuItem>
-                {/* <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                    <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      About Us
-                    </NavigationMenuLink>
-                  </Link>
-                </NavigationMenuItem> */}
-              </NavigationMenuList>
-            </NavigationMenu> 
-<div className={`${font.className} text-sm flex items-center gap-x-10 `}>
-            <div className="  ">
-              <Link href="/files/About.docx" className={font.className}> 
-              About Us
-              </Link>
-          
-            </div>
-         <div className="flex justify-center items-center ml-96 transition-all hover:bg-gray-200 hover:border-[#f3edf0] border-2 border-gray-300 w-36 p-1 text-sm rounded-lg">
-          <SignInButton mode="modal" >
+          {/* Login/Register Button */}
+          <div className="transition-all hover:bg-gray-200 hover:border-[#f3edf0] border-2 border-gray-300 w-36 p-1 text-sm font-semibold rounded-lg flex items-center justify-center">
+            <SignInButton mode="modal">
               Log In / Register
-             </SignInButton>
-             </div>
-             </div>
-
-             </div>
-             
+            </SignInButton>
+          </div>
         </SignedOut>
-        <SignedIn>
-          
-           <UserButton/>
-           
-           
-          
-           {/* userbutton is similar to the profile button */}
-        </SignedIn>
 
+        {/* Signed In View */}
+        <SignedIn>
+          <UserButton  />
+        </SignedIn>
       </div>
     </div>
-  )
+  );
 }
 
 export default Header;

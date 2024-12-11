@@ -61,13 +61,14 @@ function Document({id}:{id: string}) {
                 
                 
                 </Button>
-
+           
 
                 {/* IF*/}
                 {isOwner && (
                   <>
                   {/**Ivite user */}
                    <InviteUser />
+                
 
                   {/**delete doc button */}
                    <DeleteDocument />

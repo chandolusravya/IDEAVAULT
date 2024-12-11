@@ -56,14 +56,17 @@ export default function Page() {
         const docSnap = await getDoc(docRef);
         const imageUrl = docSnap.exists() ? docSnap.data().imageUrl : null;
         const title = docSnap.exists() ? docSnap.data().title : "Untitled Document"; // Get the title from the document
+       // const createdAt = docSnap.exists() ? docSnap.data().createdAt : null;
+       
 
         const roomDoc = {
           id: curr.id,
           imageUrl,
           title,
+          
           ...roomData
         };
-     
+    
 
         // Now map the image URL and title
         if (roomData.role === "owner") {
@@ -154,14 +157,22 @@ export default function Page() {
                             alt="Update Doc Image"
                             className="w-full h-36 cursor-pointer rounded-lg flex items-center justify-center border-4"
                           />
-                        
+                      
+
                         </a>
+                        
                         
                       ) : (
                         <a href={`/doc/${doc.id}`} className="flex-1 text-blue-500 underline text-center">
                           {doc.title}
+                        
+  
                         </a>
                       )}
+               
+                      
+   
+
                       
                       {/* Show the button only if the image has not been generated */}
                      

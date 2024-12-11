@@ -15,6 +15,13 @@ export async function POST(req:NextRequest) {
             { status: 401 }
         );
     }
+    if (!sessionClaims.email || !sessionClaims.fullName) {
+        return NextResponse.json(
+            { message: "Incomplete user session information" },
+            { status: 403 }
+        );
+    }
+
     const {room}=await req.json();
 
     //get user, prepare a session & populate data in the user info as part of the access token 

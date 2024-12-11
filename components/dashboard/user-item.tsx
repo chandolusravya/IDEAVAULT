@@ -25,7 +25,7 @@ export const UserItem = () =>{
                         <AvatarImage src={user?.imageUrl}/>
                     </Avatar>
                     <span className="text-start font-medium line-clamp-1 font-sans">
-                        {user?.username}&apos;s Ideavault
+                        {user?.username}&apos;s Workspace
                     </span>
                   </div>
                   <ChevronsLeftRight className="rotate-90 ml-2 text-muted-foreground h-4 w-4" />
