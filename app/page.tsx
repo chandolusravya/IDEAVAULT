@@ -9,7 +9,7 @@ import Link from "next/link";
 import FlickeringGrid from "@/components/ui/flickering-grid";
 import { CarouselDemo } from "@/components/CarouselDemo";
 import Card_Landing from "@/components/Card_Landing";
-import useMeasure from "react-use-measure";
+
 
 const font=Poppins({
   subsets:["latin"],
@@ -83,7 +83,7 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
       text-sm
       hover: shadow-[1px_1px_rgba(0,0,0),2px_2px_rgba(0,0,0),3px_3px_rgba(0,0,0),4px_4px_rgba(0,0,0),5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[1px_1px_rgba(255,255,255),2px_2px_rgba(255,255,255),3px_3px_rgba(255,255,255),4px_4px_rgba(255,255,255),5px_5px_0px_0px_rgba(255,255,255)] ">
       <Link href="/sign-up" className="flex items-center">
-        GET IDEAVAULT FREE <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
+        GET STARTED <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
         
         </Link>
       
@@ -97,8 +97,8 @@ bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,2
       transition duration-200 
       text-sm 
       hover: shadow-[1px_1px_rgba(0,0,0),2px_2px_rgba(0,0,0),3px_3px_rgba(0,0,0),4px_4px_rgba(0,0,0),5px_5px_0px_0px_rgba(0,0,0)] dark:shadow-[1px_1px_rgba(255,255,255),2px_2px_rgba(255,255,255),3px_3px_rgba(255,255,255),4px_4px_rgba(255,255,255),5px_5px_0px_0px_rgba(255,255,255)] ">
-   <Link href="/" className="flex items-center">
-        Explore Docs <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
+   <Link href="/about" className="flex items-center">
+        OUR STORY <ArrowRight className="ml-2 w-5 h-5 strokewidth={5}"/>
         
         </Link>
       </Button>

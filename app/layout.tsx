@@ -9,7 +9,7 @@ import Header from "@/components/Header";
 
 import { Toaster } from "@/components/ui/sonner";
 
-
+import { Analytics } from "@vercel/analytics/react"
 
 //defining fonts
 // const geistSans = localFont({
@@ -61,6 +61,7 @@ export default function RootLayout({
         
         <div className="flex-1 bg-slate-200 overflow-y-auto scrollbar-hide">
           {children}
+          <Analytics/>
         </div>
  
     

@@ -15,6 +15,8 @@ import InviteUser from "./InviteUser";
 import ManageUsers from "./ManageUsers";
 import Avatars from "./Avatars";
 import CommentSection from "./Comments";
+import { LostConnectionToasts } from "./LostConnectionToasts";
+import { Status } from "./Status";
 
 
 
@@ -48,8 +50,12 @@ function Document({id}:{id: string}) {
   return (
     //for the editor to be white
     <div className="flex-1 h-full ml-[10px] bg-white p-5 ">
-
+      <div className="flex justify-start w-6 mb-5 ml-5 ">
+      <Status/>
+      </div>
+           
         <div  className="flex max-w-6xl mx-auto justify-between pb-5 pr-5 pl-5">
+        
             <form className="flex flex-1 space-x-2 " onSubmit={updateTitle}>
                 {/**title creation and update.. */}
                 {/**updating the state depending the keys typed by user */}
@@ -81,9 +87,11 @@ function Document({id}:{id: string}) {
           {/** Manage Users */}
         <div className="flex max-w-6xl mx-auto justify-between items-center pb-5 pr-5 pl-5">
          < ManageUsers />
+       
      
           {/**Avatars */}
           <Avatars />
+          <LostConnectionToasts/>
 
     </div>
     {/**horizontal line below input area */}

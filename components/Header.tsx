@@ -21,6 +21,8 @@ import {
 } from "@/components/ui/navigation-menu";
 import Breadcrumbs from "./Breadcrumbs";
 
+
+
 // Font configuration
 const font = Poppins({
   subsets: ["latin"],
@@ -96,14 +98,14 @@ function Header() {
                   AI Features
                 </NavigationMenuTrigger>
                 <NavigationMenuContent>
-                  <ul className="grid gap-2 p-2">
+                  <ul className="grid gap-2 p-2 ">
                     {[
                       "Summarize & Translate",
                       "Chat with document",
                       "Custom Dashboard"
                     ].map((feature) => (
                       <li key={feature}>
-                        <Button className="w-44 h-10 border-2 border-white flex justify-start items-center">
+                        <Button className="w-44 h-10 border-2 border-white flex justify-start items-center ">
                           {feature}
                         </Button>
                       </li>
